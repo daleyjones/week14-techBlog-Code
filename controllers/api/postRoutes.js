@@ -1,13 +1,13 @@
 const router = require('express').Router();
-const { Post } = require('../../models/');
+const { Post, Comment } = require('../../models/');
 const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, async (req, res) => {
-  const body = req.body;
-
+router.get('/', withAuth, async (req, res) => {
   try {
-    const newPost = await Post.create({ ...body, userId: req.session.userId });
-    res.json(newPost);
+    const postData = await Post.findAll({
+      include: [{ model: Comment }],
+    });
+    res.status(200).json(postData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -15,17 +15,51 @@ router.post('/', withAuth, async (req, res) => {
 
 router.put('/:id', withAuth, async (req, res) => {
   try {
-    const [affectedRows] = await Post.update(req.body, {
+    const postId = req.params.id;
+    const newData = {
+      title: req.body.title,
+      body: req.body.body,
+    };
+
+    await Post.update(newData, {
       where: {
-        id: req.params.id,
+        id: postId,
       },
     });
 
-    if (affectedRows > 0) {
-      res.status(200).end();
+    res.status(200).end();
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/:id', withAuth, async (req, res) => {
+  try {
+    const postId = req.params.id;
+    const postData = await Post.findByPk(postId, {
+      include: [{ model: Comment }],
+    });
+
+    if (!postData) {
+      res.status(404).json({ message: 'No post found with this id!' });
     } else {
-      res.status(404).end();
+      res.status(200).json(postData);
     }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.post('/', withAuth, async (req, res) => {
+  const newData = {
+    title: req.body.title,
+    body: req.body.body,
+    user_id: req.session.user_id,
+  };
+
+  try {
+    const newPost = await Post.create(newData);
+    res.status(201).json(newPost);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -33,16 +67,18 @@ router.put('/:id', withAuth, async (req, res) => {
 
 router.delete('/:id', withAuth, async (req, res) => {
   try {
-    const [affectedRows] = Post.destroy({
+    const postId = req.params.id;
+    const postData = await Post.destroy({
       where: {
-        id: req.params.id,
+        id: postId,
+        user_id: req.session.user_id,
       },
     });
 
-    if (affectedRows > 0) {
-      res.status(200).end();
+    if (!postData) {
+      res.status(404).json({ message: 'No post found with this id!' });
     } else {
-      res.status(404).end();
+      res.status(204).end();
     }
   } catch (err) {
     res.status(500).json(err);
