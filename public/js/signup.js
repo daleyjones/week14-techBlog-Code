@@ -1,11 +1,10 @@
-document
-  .querySelector('.signup-form')
-  .addEventListener('submit', async function (event) {
-    event.preventDefault();
+const signupFormHandler = async function(event) {
+  event.preventDefault();
+
 
     const usernameel = document.getElementById('username-signup').value;
     // const email = document.getElementById('email-signup').value;
-    const passwordeel = document.getElementById('password-signup').value;
+    const passwordel = document.getElementById('password-signup').value;
 
     const response = await fetch('/api/user', {
       method: 'POST',
@@ -19,7 +18,7 @@ document
 
     
 
-    // Display the response message to the user
+    
     
 
     // Optionally, you can redirect the user to a new page after successful signup
@@ -29,4 +28,8 @@ document
     } else {
       alert(response.statusText);
     }
-  })
+  };
+
+  document
+  .querySelector('#signup-form')
+  .addEventListener('submit', signupFormHandler);
