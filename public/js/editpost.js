@@ -6,7 +6,7 @@ const editFormHandler = async function(event) {
   const title = document.querySelector('input[name="post-title"]').value;
   const body = document.querySelector('textarea[name="post-body"]').value;
 
-  await fetch(`/api/post/${postId}`, {
+  await fetch(`/api/projectsRoutes/${postId}`, {
     method: 'PUT',
     body: JSON.stringify({
       title,
@@ -17,7 +17,7 @@ const editFormHandler = async function(event) {
     }
   });
 
-  document.location.replace('/dashboard');
+  document.location.replace('/profile');
 };
 
 const deleteClickHandler = async function() {
@@ -25,7 +25,7 @@ const deleteClickHandler = async function() {
     method: 'DELETE'
   });
 
-  document.location.replace('/dashboard');
+  document.location.replace('/profile');
 };
 
 document

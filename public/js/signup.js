@@ -1,26 +1,27 @@
-const signupFormHandler = async function(event) {
+document
+  .querySelector('.signup-form')
+  .addEventListener('submit', async (event) => {
     event.preventDefault();
-  
-    const usernameEl = document.querySelector('#username-input-signup');
-    const passwordEl = document.querySelector('#password-input-signup');
-  
-    const response = await fetch('/api/user', {
+
+    const name = document.getElementById('name-signup').value;
+    const email = document.getElementById('email-signup').value;
+    const password = document.getElementById('password-signup').value;
+
+    const response = await fetch('/api/signup', {
       method: 'POST',
-      body: JSON.stringify({
-        username: usernameEl.value,
-        password: passwordEl.value,
-      }),
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email, password }),
     });
-  
+
+    const data = await response.json();
+
+    // Display the response message to the user
+    alert(data.message);
+
+    // Optionally, you can redirect the user to a new page after successful signup
     if (response.ok) {
-      document.location.replace('/dashboard');
-    } else {
-      alert('Failed to sign up');
+      window.location.replace('/dashboard'); // Replace '/dashboard' with the desired page URL
     }
-  };
-  
-  document
-    .querySelector('#signup-form')
-    .addEventListener('submit', signupFormHandler);
-  
+  });
