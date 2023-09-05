@@ -29,7 +29,7 @@ router.post('/login', async (req, res) => {
     });
 
     if (!user) {
-      res.status(400).json({ message: 'No user account found!' });
+      res.status(400).json({ message: 'No user found!' });
       return;
     }
 
