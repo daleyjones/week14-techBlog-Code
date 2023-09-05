@@ -13,13 +13,7 @@ const signupFormHandler = async function(event) {
         password: passwordel.value,
        }),
       headers: { 'Content-Type': 'application/json' },
-    });
-
-
-    
-
-    
-    
+    })
 
     // Optionally, you can redirect the user to a new page after successful signup
     if (response.ok) {
