@@ -1,260 +1,171 @@
-:root {
-  --primary: #3498db;
-  --secondary: #e74c3c;
-  --tertiary: #2ecc71;
-  --light-dark: #6f6866;
-  --dark: #38302e;
-  --border-radius: 0.3rem;
-}
-
+/* Reset some default browser styles */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
+/* Set a background color and font for the entire page */
 body {
-  background-color: var(--primary);
-  margin: 0;
-  padding: 0;
-  font-family: "IBM Plex Sans", sans-serif;
-  color: var(--dark);
-  line-height: 1.5;
-  font-size: 16px;
+  background-color: #f0f0f0;
+  font-family: 'IBM Plex Sans', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  margin: 0;
-  color: var(--dark);
-  line-height: 1.21;
-}
-
-h2 a:visited {
-  color: var(--tertiary);
-}
-
-h2 a {
-  color: var(--primary);
-}
-
-header {
-  margin-top: 50px;
-}
-
-main {
-  margin: 20px auto;
-  width: 94%;
-}
-
-a {
-  text-decoration: none;
-}
-
-p {
-  font-size: 1.2rem;
-}
-
-input {
-  width: 100%;
-  border: 1px solid #ccc;
-  background: #FFF;
-  margin: 0 0 5px;
+/* Style the navigation bar */
+.navbar {
+  background-color: #333;
+  color: white;
   padding: 10px;
 }
 
-.card-header h2 {
-  color: var(--primary);
-}
-
-.btn {
-  font-size: 1.3rem;
-  text-decoration: none;
-  padding: 6px 5px;
-  width: 100%;
-  display: block;
-  margin: 5px 0;
-  border-radius: var(--border-radius);
-  color: var(--primary);
-  border: none;
-  outline: none;
-  background-color: var(--light-dark);
-  box-shadow: 3px 3px var(--dark);
-  transform: translate(-1px, -1px);
-}
-
-.btn:hover {
-  color: var(--primary);
-  background-color: var(--tertiary);
-  transform: translate(0, 0);
-  box-shadow: 2px 2px var(--dark);
-}
-
-.btn-inline {
-  display: inline;
-}
-
-.li-inline {
-  display: inline;
-}
-
-.navbar {
-  width: 100%;
-  position: fixed;
-  background-color: var(--dark);
+.navbar ul {
+  list-style-type: none;
 }
 
 .nav-item {
-  margin: 0 40px;
+  display: inline;
+  margin-right: 20px;
 }
 
 .nav-item a {
-  color: var(--primary);
+  text-decoration: none;
+  color: white;
 }
 
+/* Style the header */
 .hero {
-  padding: 3% 4%;
-  background-color: var(--dark);
-  color: var(--primary);
-}
-
-.hero p {
-  max-width: 75%;
-}
-
-.app-title {
-  font-size: 3rem;
-  background-color: var(--primary);
-  color: var(--dark);
-  padding: 0 10px;
-  display: inline-block;
-  border-radius: var(--border-radius);
-  box-shadow: 6px 5px var(--light-dark);
+  background-color: #007bff;
+  color: white;
+  padding: 40px;
+  text-align: center;
 }
 
 .app-title a {
-  color: var(--dark);
-}
-
-.list-group {
-  padding: 1%;
-}
-
-.list-item {
-  margin-bottom: 10px;
-  padding: 1.5%;
-  border-radius: var(--border-radius);
-  background-color: var(--light-dark);
-  color: var(--primary);
   text-decoration: none;
+  color: white;
+  font-size: 24px;
 }
 
-.list-item:hover {
-  background-color: var(--dark);
+/* Style the main content */
+.main {
+  padding: 20px;
+}
+
+/* Style the footer */
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
 }
 
 .footer a {
-  display: inline-block;
-  padding: 1em;
-  margin-bottom: .5em;
-  background-color: var(--dark);
-  color: var(--primary);
-  border-radius: var(--border-radius);
   text-decoration: none;
+  color: white;
+  font-weight: bold;
 }
 
-/* CARDS */
-.card {
-  margin: 0 0 20px 0;
-  border: 3px solid var(--dark);
-  border-radius: var(--border-radius);
+/* Add some spacing to the links */
+.navbar a,
+.footer a {
+  margin-right: 10px;
 }
 
+/* Style the logout link */
+#logout-link {
+  color: red;
+}
+
+/* Style the container for the list of posts */
+.posts {
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+/* Style the individual list items */
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.2s;
+}
+
+.list-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* Style the date */
+.list-item span:nth-child(2) {
+  font-size: 14px;
+  color: #777;
+}
+
+/* Style the comment card */
+.comment.card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the card header */
 .card-header {
-  color: var(--primary);
-  background-color: var(--dark);
-  padding: 1%;
-  border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border-radius: 5px 5px 0 0;
 }
 
+.card-header h2 {
+  font-size: 20px;
+  margin: 0;
+}
+
+/* Style the form within the card body */
 .card-body {
-  padding: 1%;
+  padding: 10px;
 }
 
-/* FORM */
-.form-label,
-.form-input,
-.form-textarea {
-  display: block;
-}
-
+/* Style the form label and input */
 .form-label {
-  font-size: 1.1rem;
-  margin: 0 0 0 5px;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .form-input {
   width: 100%;
-  padding: 1%;
-  margin: 5px 0;
-  font-size: 1.2rem;
-  border: 2px solid var(--light-dark);
-  border-radius: var(--border-radius);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  resize: vertical; /* Allow vertical resizing of the textarea */
 }
 
-/* HEIGHT / WIDTH UTILS */
-.min-100-vh {
-  min-height: 100vh;
+/* Style the buttons */
+.btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-right: 10px;
 }
 
-.min-100-vw {
-  min-width: 100vw;
+#delete-btn {
+  background-color: #dc3545; /* Red color for delete button */
 }
 
-/* FONT UTILS */
-.text-uppercase {
-  text-transform: uppercase;
+/* Style the script section */
+script[src="/public/js/editcomment.js"] {
+  margin-top: 20px;
 }
-
-/* FLEX CONTENT */
-.flex-row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.flex-column {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
-
-.justify-space-between {
-  justify-content: space-between;
-}
-
-.justify-space-around {
-  justify-content: space-around;
-}
-
-.justify-flex-start {
-  justify-content: flex-start;
-}
-
-.justify-flex-end {
-  justify-content: flex-end;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
-.align-stretch {
-  align-items: stretch;
-}
-
-.align-end {
-  align-items: flex-end;
-}
-
-.align-center {
-  align-items: center;
-}
-
