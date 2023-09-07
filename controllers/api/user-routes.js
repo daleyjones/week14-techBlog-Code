@@ -29,14 +29,14 @@ router.post('/login', async (req, res) => {
     });
 
     if (!user) {
-      res.status(400).json({ message: 'No user found!' });
+      res.status(400).json({ message: 'No account found!' });
       return;
     }
 
     const validPassword = user.checkPassword(req.body.password);
 
     if (!validPassword) {
-      res.status(400).json({ message: 'Incorrect password.' });
+      res.status(400).json({ message: 'No account found!' });
       return;
     }
 
@@ -48,7 +48,7 @@ router.post('/login', async (req, res) => {
       res.json({ user, message: 'You are now logged in!' });
     });
   } catch (err) {
-    res.status(400).json({ message: 'No user found!' });
+    res.status(400).json({ message: 'No account found!' });
   }
 });
 
@@ -58,7 +58,7 @@ router.post('/logout', (req, res) => {
       res.status(204).end();
     });
   } else {
-    res.status(401).end();
+    res.status(404).end();
   }
 });
 

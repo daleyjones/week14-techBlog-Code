@@ -1,15 +1,12 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
+const { Post } = require('../../models/');
 const withAuth = require('../../utils/auth');
 
 router.post('/', withAuth, async (req, res) => {
   const body = req.body;
 
   try {
-    const newPost = await Post.create({
-      ...body,
-      user_id: req.session.user_id,
-    });
+    const newPost = await Post.create({ ...body, userId: req.session.userId });
     res.json(newPost);
   } catch (err) {
     res.status(500).json(err);
@@ -36,19 +33,17 @@ router.put('/:id', withAuth, async (req, res) => {
 
 router.delete('/:id', withAuth, async (req, res) => {
   try {
-    const PostData = await Post.destroy({
+    const [affectedRows] = Post.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
       },
     });
 
-    if (!PostData) {
-      res.status(404).json({ message: 'No Post found with this id!' });
-      return;
+    if (affectedRows > 0) {
+      res.status(200).end();
+    } else {
+      res.status(404).end();
     }
-
-    res.status(200).json(PostData);
   } catch (err) {
     res.status(500).json(err);
   }
