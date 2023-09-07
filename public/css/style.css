@@ -71,15 +71,20 @@ main {
   width: 100%;
   position: fixed;
   background-color: var(--dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav-item {
-  margin: 0 20px; /* Adjust margin */
+  margin: 0 20px;
 }
 
 .nav-item a {
-  color: var(--primary);
+  color: white;
+  text-decoration: none;
 }
+
 
 /* Update hero styles */
 .hero {
