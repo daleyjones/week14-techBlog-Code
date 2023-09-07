@@ -16,7 +16,7 @@ const editFormHandler = async function(event) {
     }
   });
 
-  document.location.replace('/profile');
+  document.location.replace('/dashboard');
 };
 
 const deleteClickHandler = async function() {
