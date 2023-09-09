@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, Comment, User } = require('../models/');
+const { Post, Comment, User } = require('../models');
 
 
 router.get('/', async (req, res) => {
@@ -15,7 +15,6 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 router.get('/post/:id', async (req, res) => {
   try {
