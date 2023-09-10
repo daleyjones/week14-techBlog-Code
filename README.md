@@ -17,6 +17,9 @@ Welcome to My Tech Blog project! This web application allows developers to publi
 
 This Tech Blog project provides a platform for developers to share their technical knowledge, insights, and opinions with the community. Users can create accounts, publish articles, comment on posts, and interact with others who share their passion for technology.
 
+# SCREENSHOT
+![Screenshot](./public/images/Screenshot.png)
+
 User Story
 markdown
 Copy code
