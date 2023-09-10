@@ -1,9 +1,9 @@
 const signupFormHandler = async function (event) {
   event.preventDefault();
 
-  const usernameel = document.getElementById("username-input-signup");
+  const usernameel = document.getElementById("#username-input-signup");
 
-  const passwordel = document.getElementById("password-input-signup");
+  const passwordel = document.getElementById("#password-input-signup");
 
   const response = await fetch("/api/user", {
     method: "POST",
